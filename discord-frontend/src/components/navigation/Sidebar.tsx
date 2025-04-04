@@ -1,12 +1,19 @@
 import React from 'react'
 import classes from './Sidebar.module.css'
 import { Button, Center } from '@mantine/core'
+import { IconPlus } from '@tabler/icons-react';
 
 function Sidebar() {
   return (
     <nav className={classes.navbar}>
      <Center>
-      <Button variant="subtle" radius={100} onClick={() => {}}>
+      <Button 
+       className={classes.link}
+       variant="subtle" 
+       radius={100} 
+       onClick={() => 
+        {}}>
+          <IconPlus radius={100} />
       </Button>
      </Center>
     </nav>
