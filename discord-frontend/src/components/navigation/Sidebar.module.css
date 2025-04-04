@@ -12,6 +12,7 @@
     );
   }
    .link {
+      padding: 0;
       width: rem(50);
       height: rem(50);
       color: light-dark(
