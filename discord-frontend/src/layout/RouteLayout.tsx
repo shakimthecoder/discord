@@ -1,6 +1,10 @@
+import { Outlet } from "react-router-dom"}
+
 function RouteLayout() {
   return (
-    <div>RouteLayout</div>
+    <div>
+      <Outlet />
+    </div>
   )
 }
 
