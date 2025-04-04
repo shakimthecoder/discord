@@ -16,6 +16,13 @@ function Sidebar() {
           <IconPlus radius={100} />
       </Button>
      </Center>
+     <Button
+     className={classes.link}
+     variant="subtle"
+     radius={100}
+     onClick={() => {}}
+     >
+     </Button>
     </nav>
   )
 }
