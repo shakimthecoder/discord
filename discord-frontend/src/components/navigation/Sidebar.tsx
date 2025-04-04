@@ -1,10 +1,11 @@
 import React from 'react'
 import '@mantine/core/styles.css';
 import classes from './Sidebar.module.css'
-import { Button, Center, Stack } from '@mantine/core'
-import { IconPlus, IconArrowsJoin, IconMoon, IconSun} from '@tabler/icons-react';
+import { Button, Center, Stack, useMantineColorScheme } from '@mantine/core'
+import { IconPlus, IconArrowsJoin, IconMoon, IconSun } from '@tabler/icons-react';
 
 function Sidebar() {
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   return (
     <nav className={classes.navbar}>
      <Center>
@@ -37,8 +38,6 @@ function Sidebar() {
             <IconMoon radius={100} /> 
             ): (
             <IconSun radius={100} />)
-            
-         )
          }
        </Button>
       </Stack>
