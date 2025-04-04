@@ -31,11 +31,11 @@ if (!PUBLISHABLE_KEY) {
 const RouterComponent = () => {
   const navigate = useNavigate();
   return (
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY} 
-      >
       <Routes>
        <Route path="" element={<RootLayout />}>
-        <Route element={
+        <Route 
+        index
+        element={
           <ProtectedRoute>
             <HomePage />
           </ProtectedRoute>
@@ -43,8 +43,8 @@ const RouterComponent = () => {
         />
         </Route>
       </Routes>
-     </ClerkProvider>
-  )
+  );
+
 }
 
 createRoot(document.getElementById('root')!).render(
