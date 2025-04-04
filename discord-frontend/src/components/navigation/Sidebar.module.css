@@ -3,7 +3,19 @@
     height: 100vh;
     inset:0;
     position: fixed;
-    padding: var(mansite-spacing-2);
+    padding: 10px;
     display: flex;
     flex-direction: column;
-}
+    background-color: light-dark(
+      var(--mantine-color-gray-3),
+      var(--mantine-color-dark-8)
+    );
+  }
+   .link {
+      width: rem(50);
+      height: rem(50);
+      color: light-dark(
+         var(--mantine-color-gray-3),
+         var(--mantine-color-dark-8)
+       );
+   }
