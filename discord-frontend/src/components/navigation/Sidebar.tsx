@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './Sidebar.module.css'
 import { Button, Center } from '@mantine/core'
-import { IconPlus } from '@tabler/icons-react';
+import { IconPlus, IconArrowsJoin } from '@tabler/icons-react';
 
 function Sidebar() {
   return (
@@ -22,6 +22,7 @@ function Sidebar() {
      radius={100}
      onClick={() => {}}
      >
+      <IconArrowsJoin radius={300} />
      </Button>
     </nav>
   )
