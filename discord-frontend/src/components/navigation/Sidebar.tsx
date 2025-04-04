@@ -1,4 +1,5 @@
 import React from 'react'
+import '@mantine/core/styles.css';
 import classes from './Sidebar.module.css'
 import { Button, Center } from '@mantine/core'
 import { IconPlus, IconArrowsJoin } from '@tabler/icons-react';
