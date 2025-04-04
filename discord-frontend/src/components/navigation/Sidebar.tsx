@@ -1,8 +1,8 @@
 import React from 'react'
 import '@mantine/core/styles.css';
 import classes from './Sidebar.module.css'
-import { Button, Center } from '@mantine/core'
-import { IconPlus, IconArrowsJoin } from '@tabler/icons-react';
+import { Button, Center, Stack } from '@mantine/core'
+import { IconPlus, IconArrowsJoin, IconMoon, IconSun} from '@tabler/icons-react';
 
 function Sidebar() {
   return (
@@ -25,6 +25,23 @@ function Sidebar() {
      >
       <IconArrowsJoin radius={300} />
      </Button>
+      <Stack justify="center" align="center">
+       <Button
+        className={classes.link}
+        variant="subtle"
+        onClick={toggleColorScheme}
+        radius={100}
+        p={0}
+        >
+         { colorScheme === 'dark' ? (
+            <IconMoon radius={100} /> 
+            ): (
+            <IconSun radius={100} />)
+            
+         )
+         }
+       </Button>
+      </Stack>
     </nav>
   )
 }
