@@ -15,7 +15,7 @@
       width: rem(50);
       height: rem(50);
       color: light-dark(
-         var(--mantine-color-gray-3),
-         var(--mantine-color-dark-8)
+         var(--mantine-color-gray-7),
+         var(--mantine-color-dark-0)
        );
    }
