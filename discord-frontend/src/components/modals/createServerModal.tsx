@@ -1,4 +1,4 @@
-import { Modal, Stack, Flex, Group, rem } from '@mantine/core';
+import { Modal, Stack, Flex, Group, rem, Button } from '@mantine/core';
 import React from 'react';
 import { useModal } from '../../../hooks/useModal';
 import { IconUpload, IconX } from '@tabler/icons-react';
@@ -61,7 +61,22 @@ export function CreateServerModal() {
                      </Group>                      
                     </Dropzone>
                     }
-                    {imagePreview && <Flex pos="relative" h={rem(150)} w={rem(150)} mt="md"></Flex>}
+                    {imagePreview && <Flex pos="relative" h={rem(150)} w={rem(150)} mt="md">
+                        <>
+                        <Button
+                         pos="absolute"
+                         w={rem(30)}
+                         style={{
+                         zIndex: 1,
+                         borderRadius: "50%",
+                         padding: 0,
+                         top: 0
+                         }}
+                         h={rem(30)}> 
+                         </Button>
+                         <IconX color="white" />
+                         </>
+                         </Flex>}
                 </Flex>
             </Stack>
           </form>
