@@ -40,10 +40,12 @@ export function CreateServerModal() {
                      pointerEvents: 'none',
                      }}
                      >
-                        <Dropzone.Accept>
-                            <IconUpload size="1.2rem" stroke={1.5} />
-                             
+                      <Dropzone.Accept>
+                        <IconUpload size="1.2rem" stroke={1.5} />
                         </Dropzone.Accept>
+                        <Dropzone.Reject>
+                            <IconUpload size="1.2rem" stroke={1.5} color="red" />
+                            </Dropzone.Reject>
                      </Group>
                                         
                         </Dropzone>}
