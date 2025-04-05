@@ -13,5 +13,10 @@ function useModal(modalType: Modal){
     const closeModal = () => {
         setActiveModal(null);
     }
+    return {
+        isOpen,
+        openModal,
+        closeModal
+    };
 
 }
