@@ -1,8 +1,10 @@
-import { Modal, Stack, Flex } from '@mantine/core';
+import { Modal, Stack, Flex, Group } from '@mantine/core';
 import { useModal } from '../../../hooks/useModal';
+import { IconUpload } from '@tabler/icons-react';
 import { useForm } from '@mantine/form';
 import { Text } from '@mantine/core';
-import { Dropzone } from '@mantine/dropzone'
+import { Dropzone, IMAGE_MIME_TYPE } from '@mantine/dropzone';
+import * as classes from './CreateServerModal.module.css';
 
 export function CreateServerModal() {
     const { isOpen, closeModal } = useModal("CreateServer");
@@ -25,7 +27,25 @@ export function CreateServerModal() {
           <form onSubmit={() => {}}>
             <Stack >
                 <Flex justify="center" align="center" direction="column">
-                    { !imagePreview && <Dropzone>
+                    { !imagePreview && 
+                    <Dropzone
+                    onDrop={() => {}}
+                    className={classes.dropZone}
+                    accept={IMAGE_MIME_TYPE}
+                    mt="md"
+                    >
+                     <Group
+                     style={{
+                     minHeight: rem(100),
+                     pointerEvents: 'none',
+                     }}
+                     >
+                        <Dropzone.Accept>
+                            <IconUpload size="1.2rem" stroke={1.5} />
+                             
+                        </Dropzone.Accept>
+                     </Group>
+                                        
                         </Dropzone>}
                 </Flex>
             </Stack>
