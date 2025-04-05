@@ -1,6 +1,6 @@
-import { Modal, Stack, Flex, Group } from '@mantine/core';
+import { Modal, Stack, Flex, Group, rem } from '@mantine/core';
 import { useModal } from '../../../hooks/useModal';
-import { IconUpload } from '@tabler/icons-react';
+import { IconUpload, IconX } from '@tabler/icons-react';
 import { useForm } from '@mantine/form';
 import { Text } from '@mantine/core';
 import { Dropzone, IMAGE_MIME_TYPE } from '@mantine/dropzone';
@@ -44,11 +44,13 @@ export function CreateServerModal() {
                         <IconUpload size="1.2rem" stroke={1.5} />
                         </Dropzone.Accept>
                         <Dropzone.Reject>
-                            <IconUpload size="1.2rem" stroke={1.5} color="red" />
+                            <IconX size="1.2rem" stroke={1.5} color="red" />
                             </Dropzone.Reject>
-                     </Group>
-                                        
-                        </Dropzone>}
+                            <Dropzone.Idle>
+                                <IconUpload size="1.2rem" stroke={1.5} />
+                            </Dropzone.Idle>
+                     </Group>                      
+                    </Dropzone>}
                 </Flex>
             </Stack>
 
