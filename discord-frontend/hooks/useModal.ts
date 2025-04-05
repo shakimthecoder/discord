@@ -1,6 +1,6 @@
 import { Modal, useGeneralStore } from "../stores/generalstore";
 
-function useModal(modalType: Modal){
+export function useModal(modalType: Modal){
     const activeModal = useGeneralStore((state) => state.activeModal);
     const setActiveModal = useGeneralStore((state) => state.setActiveModal);
 
