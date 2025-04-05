@@ -1,4 +1,4 @@
-import { Modal, Stack, Flex, Group, rem, Button } from '@mantine/core';
+import { Modal, Stack, Flex, Group, rem, Button, Image } from '@mantine/core';
 import React from 'react';
 import { useModal } from '../../../hooks/useModal';
 import { IconUpload, IconX } from '@tabler/icons-react';
@@ -64,6 +64,8 @@ export function CreateServerModal() {
                     {imagePreview && <Flex pos="relative" h={rem(150)} w={rem(150)} mt="md">
                         <>
                         <Button
+                         onClick={() => setImagePreview(null)}
+                         color="red"
                          pos="absolute"
                          w={rem(30)}
                          style={{
@@ -73,8 +75,9 @@ export function CreateServerModal() {
                          top: 0
                          }}
                          h={rem(30)}> 
-                         </Button>
                          <IconX color="white" />
+                         </Button>
+                         <Image src={imagePreview} w={rem(200)} h={rem(200)} />
                          </>
                          </Flex>}
                 </Flex>
