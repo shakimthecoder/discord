@@ -8,6 +8,7 @@ import { MantineProvider } from '@mantine/core'
 import RootLayout from './layout/RootLayout.tsx'
 import App from './App.tsx'
 import HomePage from './pages/HomePage.tsx';
+import { CreateServerModal } from './components/modals/createServerModal.tsx';
 
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -37,6 +38,7 @@ const RouterComponent = () => {
         index
         element={
           <ProtectedRoute>
+            <CreateServerModal />
             <HomePage />
           </ProtectedRoute>
         }
