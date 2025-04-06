@@ -1,5 +1,5 @@
 import { Modal, Stack, Flex, Group, rem, Button, Image } from '@mantine/core';
-import React from 'react';
+import React, { useState } from 'react';
 import { useModal } from '../../../hooks/useModal';
 import { IconUpload, IconX } from '@tabler/icons-react';
 import { useForm } from '@mantine/form';
@@ -17,6 +17,8 @@ export function CreateServerModal() {
             name: (value) => !value.trim && 'Please enter a name for your server',
         }
     });
+    
+    const [files, setFiles] = useState<File | null>(null);
 
     const handleDropZoneChange: DropzoneProps["onDrop"] = (files) => {
         if(files.length === 0) {
@@ -26,6 +28,8 @@ export function CreateServerModal() {
         reader.onload = (e) => {
             setImagePreview(e.target?.result as string);
         }
+        setFiles(files[0]);
+        reader.readAsDataURL(files[0])
     }
 
     const [imagePreview, setImagePreview] = React.useState<string | null>(null);
