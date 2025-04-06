@@ -45,16 +45,40 @@ enum MemberRole {
 }
 
 model Member {
-    id   Int    @id @default(autoincrement())
-    profileId Int 
-    serverId Int
-    profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+    id        Int     @id @default(autoincrement())
+    profileId Int
+    serverId  Int
+    profile   Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
 
-    messages Message[]
+    messages       Message[]
     directMessages DirectMessage[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+
+    @@index([profileId, serverId])
+}
+
+enum ChannelType {
+    TEXT
+    VIDEO
+    AUDIO
+}
+
+model Channel {
+    id Int @id @default(autoincrement())
+
+    name      String
+    type      ChannelType @default(TEXT)
+    profileId Int
+    profile   Profile     @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+    serverId Int
+    server   Server @relation(fields: [serverId], references: [id], onDelete: Cascade)
+
+    messages  Message[]
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
 
     @@index([profileId, serverId])
 }
