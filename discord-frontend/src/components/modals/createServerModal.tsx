@@ -87,12 +87,13 @@ export function CreateServerModal() {
                          zIndex: 1,
                          borderRadius: "50%",
                          padding: 0,
-                         top: 0
+                         top: 0,
+                         right: 10
                          }}
                          h={rem(30)}> 
                          <IconX color="white" />
                          </Button>
-                         <Image src={imagePreview} w={rem(200)} h={rem(200)} />
+                         <Image src={imagePreview} w={rem(200)} h={rem(200)} radius={"50"} pos="absolute" />
                          </>
                          </Flex>}
                 </Flex>
