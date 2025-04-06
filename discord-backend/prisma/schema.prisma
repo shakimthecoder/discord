@@ -69,7 +69,7 @@ enum ChannelType {
     VIDEO
     AUDIO
 }
-
+//Discord channel
 model Channel {
     id Int @id @default(autoincrement())
 
