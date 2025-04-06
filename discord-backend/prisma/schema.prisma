@@ -26,18 +26,35 @@ model Profile {
 }
 
 model Server {
-    id Int @id @default(autoincrement())
-    name String
-    imageUrl String
-    inviteCode String @unique
-    profileId Int
-    profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
-    members Member[]
-    channels Channel[]
+    id         Int       @id @default(autoincrement())
+    name       String
+    imageUrl   String
+    inviteCode String    @unique
+    profileId  Int
+    profile    Profile   @relation(fields: [profileId], references: [id], onDelete: Cascade)
+    members    Member[]
+    channels   Channel[]
+
     @@index([profileId])
 }
+
 enum MemberRole {
     ADMIN
     MODERATOR
     GUEST
+}
+
+model Member {
+    id   Int    @id @default(autoincrement())
+    profileId Int 
+    serverId Int
+    profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+    messages Message[]
+    directMessages DirectMessage[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([profileId, serverId])
 }
