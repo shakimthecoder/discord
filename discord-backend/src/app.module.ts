@@ -5,6 +5,8 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver } from '@nestjs/apollo';
+import { ServerService } from './server/server.service';
+
 
 @Module({
   imports: [
@@ -25,6 +27,6 @@ import { ApolloDriver } from '@nestjs/apollo';
     })
    ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ServerService],
 })
 export class AppModule {}
