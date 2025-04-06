@@ -4,7 +4,7 @@ import { useModal } from '../../../hooks/useModal';
 import { IconUpload, IconX } from '@tabler/icons-react';
 import { useForm } from '@mantine/form';
 import { Text } from '@mantine/core';
-import { Dropzone, IMAGE_MIME_TYPE } from '@mantine/dropzone';
+import { Dropzone, IMAGE_MIME_TYPE, DropzoneProps } from '@mantine/dropzone';
 import classes from './CreateServerModal.module.css';
 
 export function CreateServerModal() {
@@ -18,6 +18,16 @@ export function CreateServerModal() {
         }
     });
 
+    const handleDropZoneChange: DropzoneProps["onDrop"] = (files) => {
+        if(files.length === 0) {
+            setImagePreview(null);
+        }
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            setImagePreview(e.target?.result as string);
+        }
+    }
+
     const [imagePreview, setImagePreview] = React.useState<string | null>(null);
     return (
         <Modal title="Create a server" opened={isOpen} 
@@ -30,7 +40,8 @@ export function CreateServerModal() {
                 <Flex justify="center" align="center" direction="column">
                     { !imagePreview && 
                     <Dropzone
-                    onDrop={() => {}}
+                    onDrop={(files) => {
+                    handleDropZoneChange(files)}}
                     className={classes.dropZone}
                     accept={IMAGE_MIME_TYPE}
                     mt="md"
