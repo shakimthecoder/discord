@@ -1,4 +1,4 @@
-import { Modal, Stack, Flex, Group, rem, Button, Image } from '@mantine/core';
+import { Modal, Stack, Flex, Group, rem, Button, Image, TextInput } from '@mantine/core';
 import React, { useState } from 'react';
 import { useModal } from '../../../hooks/useModal';
 import { IconUpload, IconX } from '@tabler/icons-react';
@@ -93,9 +93,22 @@ export function CreateServerModal() {
                          h={rem(30)}> 
                          <IconX color="white" />
                          </Button>
-                         <Image src={imagePreview} w={rem(200)} h={rem(200)} radius={"50"} pos="absolute" />
+                         <Image src={imagePreview} w={rem(150)} h={rem(150)} radius={"50"} />
                          </>
                          </Flex>}
+                         <TextInput
+                            label="Server Name"
+                            placeholder="Enter server name"
+                            {...form.getInputProps('name')}
+                            error={form.errors.name}
+                            >
+                         </TextInput>
+                          <Button disabled={!!form.errors.name} w={"30%"} 
+                          type="submit" 
+                          variant="gradient"
+                          mt="md"> 
+                          Create Server 
+                         </Button>
                 </Flex>
             </Stack>
           </form>
