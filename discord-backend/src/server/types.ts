@@ -1,4 +1,6 @@
 import { Field, ObjectType, registerEnumType } from '@nestjs/graphql'
+import { Member } from 'src/member/member.types';
+import { Profile } from 'src/profile/profile.types';
 
 @ObjectType()
 export class Channel {
@@ -17,7 +19,7 @@ export class Channel {
      @Field()
      updatedAt: string;
 
-     @Field(() => [Message], { nullable: true})
+     @Field(() => [Member], { nullable: true})
      members: Member[];
 }
 
