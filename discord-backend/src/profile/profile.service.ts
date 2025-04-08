@@ -20,4 +20,35 @@ async createProfile(createProfileDto: CreateProfileDto) {
     })
 
 }
+
+async getProfileById(id: number) {
+    return this.prisma.profile.findUnique({
+        where: {
+            id,
+        },
+        include: {
+            servers: {
+                include: {
+                    channels: true,
+                }
+            }
+        }
+    });
+}
+
+
+async getProfileByEmail(email: string) {
+    return this.prisma.profile.findUnique({
+        where: {
+            email,
+        },
+        include: {
+            servers: {
+                include: {
+                    channels: true,
+                }
+            }
+        }
+    });
+}
 }
