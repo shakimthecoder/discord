@@ -1,6 +1,8 @@
 import { ObjectType, Field } from '@nestjs/graphql';
 import { Server } from 'src/server/types';
 import { Profile } from 'src/profile/profile.types';
+import { registerEnumType } from '@nestjs/graphql';
+
 @ObjectType()
 export class Member {
     @Field()
@@ -24,3 +26,14 @@ export class Member {
      @Field()
      updatedAt: string;
 }
+
+export enum MemberRole {
+    MODERATOR = 'MODERATOR',
+    ADMIN = 'ADMIN',
+    GUEST = 'GUEST',
+}
+
+    registerEnumType(MemberRole, {
+    name: 'MemberRole',
+    description: 'Describes the role of the user on the server'
+})
