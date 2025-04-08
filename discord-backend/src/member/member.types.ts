@@ -14,4 +14,13 @@ export class Member {
 
     @Field(() => Server, { nullable: true})
      server: Server
+
+     @Field()
+     email: string;
+
+     @Field()
+     createdAt: string;
+
+     @Field()
+     updatedAt: string;
 }
