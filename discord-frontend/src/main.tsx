@@ -5,6 +5,8 @@ import './index.css'
 import '@mantine/core/styles.css';
 import { ClerkProvider, SignedIn, SignedOut, RedirectToSignIn, RedirectToSignUp } from '@clerk/clerk-react' // Ensure you have the correct import path
 import { MantineProvider } from '@mantine/core'
+import { ApolloProvider } from '@apollo/client';
+import  client  from '../apolloClient.ts'
 import RootLayout from './layout/RootLayout.tsx'
 import App from './App.tsx'
 import HomePage from './pages/HomePage.tsx';
@@ -51,6 +53,7 @@ const RouterComponent = () => {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+    <ApolloProvider client={client}>
     <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
      <MantineProvider>
       <BrowserRouter>
@@ -59,6 +62,7 @@ createRoot(document.getElementById('root')!).render(
       <App />
     </MantineProvider>
     </ClerkProvider>
+    </ApolloProvider>
   </StrictMode>,
 )
 
