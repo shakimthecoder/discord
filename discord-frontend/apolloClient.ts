@@ -1,6 +1,10 @@
+import { InMemoryCache } from '@apollo/client/cache';
 import { setContext } from '@apollo/client/link/context';
-import { createUploadLink } from "apollo-upload-client";
-
+import { createUploadLink, errorLink } from "apollo-upload-client";
+import { ApolloClient } from '@apollo/client';
+import { onError } from '@apollo/client/link/error';
+import { NetworkError } from '@apollo/client/errors';
+import { GraphQLError } from 'graphql'; 
 const getCookie = (name: string) => {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; {$name}=`)
@@ -18,3 +22,34 @@ const authLink = setContext(
         }
     }
 )
+
+const uploadLink = createUploadLink({
+    uri: "http://localhost:3000/graphql",
+    headers: {
+        "apollo-require-preflight": "true",
+    }
+})
+
+
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+    if (graphQLErrors) {
+      graphQLErrors.map(({ message, locations, path }) => {
+        console.log(
+          `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+        )
+      })
+  
+      if (networkError) {
+        console.log(`[Network error]: ${networkError}`)
+      }
+    }
+  })
+
+const cache = new InMemoryCache();
+
+const client = new ApolloClient({
+    link: authLink.concat(uploadLink).concat(errorLink),
+    cache,
+})
+
+export default client;
