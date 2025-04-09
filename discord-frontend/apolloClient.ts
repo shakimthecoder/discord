@@ -1,8 +1,12 @@
 import { InMemoryCache } from '@apollo/client/cache';
 import { setContext } from '@apollo/client/link/context';
-import { createUploadLink, errorLink } from "apollo-upload-client";
+import createUploadLink from "apollo-upload-client/createUploadLink.mjs";
 import { ApolloClient } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
+import { loadErrorMessages, loadDevMessages } from '@apollo/client/dev';
+
+loadErrorMessages();
+loadDevMessages();
 
 const getCookie = (name: string) => {
     const value = `; ${document.cookie}`;
