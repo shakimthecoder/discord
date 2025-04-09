@@ -2,6 +2,63 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Member {
+  id: Float!
+  profile: Profile
+  profileId: Float!
+  server: Server
+  email: String!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Channel {
+  id: Float!
+  name: String
+  type: ChannelType!
+  createdAt: String!
+  updatedAt: String!
+  members: [Member!]
+}
+
+"""Describes the type of channel on the discord server"""
+enum ChannelType {
+  TEXT
+  VOICE
+  VIDEO
+}
+
+type Server {
+  id: Float!
+  name: String!
+  imageUrl: String!
+  inviteCode: String
+  profileId: Float!
+  profile: Profile
+  member: [Member!]
+  channel: [Channel!]
+}
+
+type Profile {
+  id: Float!
+  email: String
+  name: String
+  servers: [Server]
+  imageUrl: String!
+  channels: [Channel]
+}
+
 type Query {
   greeting: String!
+}
+
+type Mutation {
+  createProfile(input: CreateProfileDto!): Profile!
+  getProfiledById(id: Float!): Profile!
+}
+
+input CreateProfileDto {
+  name: String!
+  email: String!
+  imageUrl: String!
 }

@@ -7,6 +7,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver } from '@nestjs/apollo';
 import { ServerService } from './server/server.service';
 import { ServerResolver } from './server/server.resolver';
+import { ProfileModule } from './profile/profile.module';
 
 
 
@@ -26,7 +27,8 @@ import { ServerResolver } from './server/server.resolver';
           subscriptions: {}
         }
       }
-    })
+    }),
+    ProfileModule,
    ],
   controllers: [AppController],
   providers: [AppService, ServerService, ServerResolver],
