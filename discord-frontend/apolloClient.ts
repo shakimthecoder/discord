@@ -3,8 +3,7 @@ import { setContext } from '@apollo/client/link/context';
 import { createUploadLink, errorLink } from "apollo-upload-client";
 import { ApolloClient } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
-import { NetworkError } from '@apollo/client/errors';
-import { GraphQLError } from 'graphql'; 
+
 const getCookie = (name: string) => {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; {$name}=`)
