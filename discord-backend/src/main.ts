@@ -13,6 +13,7 @@ async function bootstrap() {
       'Content-Type',
       'X-Requested-With',
       'apollo-require-preflight',
+      'Access-Control-Allow-Origin'
     ]
   }),
   app.use(graphqlUploadExpress({ maxFileSize: 1000000, maxFiles: 10}))
