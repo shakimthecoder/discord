@@ -8,6 +8,7 @@ import { ApolloDriver } from '@nestjs/apollo';
 import { ServerService } from './server/server.service';
 import { ServerResolver } from './server/server.resolver';
 import { ProfileModule } from './profile/profile.module';
+import { ServerModule } from './server/server.module';
 
 
 
@@ -31,6 +32,6 @@ import { ProfileModule } from './profile/profile.module';
     ProfileModule,
    ],
   controllers: [AppController],
-  providers: [AppService, ServerService, ServerResolver],
+  providers: [AppService, ServerService, ServerResolver, ServerModule],
 })
 export class AppModule {}
