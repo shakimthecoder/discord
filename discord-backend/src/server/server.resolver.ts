@@ -37,6 +37,10 @@ export class ServerResolver {
          const uniqueFileName = uuidv4('filename');
          const imagePath = join(process.cwd(), 'public', 'images', uniqueFileName);
          const imageUrl = `{process.env.APP_URL}/images/{uniqueFileName}`;
+
+         const readStream = createReadStream();
+         readStream.pipe(createReadStream(imagePath));
+         return imageUrl;
       }
     }
     
