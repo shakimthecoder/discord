@@ -6,18 +6,47 @@ import { useForm } from '@mantine/form';
 import { Text } from '@mantine/core';
 import { Dropzone, IMAGE_MIME_TYPE, DropzoneProps } from '@mantine/dropzone';
 import classes from './CreateServerModal.module.css';
+import { useMutation } from '@apollo/client';
+import { CREATE_SERVER, } from '../../graphql/mutations/server/createServer';
+import { useProfileStore } from '../../../stores/profilestore';
+import { create } from 'zustand';
 
 export function CreateServerModal() {
     const { isOpen, closeModal } = useModal("CreateServer");
+    const [createServer, { loading}] = useMutation<
+    CreateServerMutation,
+    CreateServerMutationVariables>(CREATE_SERVER);
+    const profileId = useProfileStore((state) => state.profile?.id);
+
     const form = useForm({
         initialValues: {
-            name: '',
+          name: "",
         },
         validate: {
-            name: (value) => !value.trim && 'Please enter a name for your server',
-        }
-    });
+          name: (value) => !value.trim() && "Please enter a name.",
+        },
+      })
+      const onSubmit = () => {
+        if (!form.validate()) return
     
+        createServer({
+          variables: {
+            input: {
+              name: form.values.name,
+              profileId,
+            },
+            files,
+          },
+          onCompleted: () => {
+            setImagePreview(null)
+            setFiles(null)
+            form.reset
+            closeModal()
+          },
+    
+          refetchQueries: ["GetServers"],
+        })
+      }
     const [files, setFiles] = useState<File | null>(null);
 
     const handleDropZoneChange: DropzoneProps["onDrop"] = (files) => {
