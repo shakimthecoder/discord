@@ -53,6 +53,7 @@ const cache = new InMemoryCache();
 const client = new ApolloClient({
     link: authLink.concat(uploadLink).concat(errorLink),
     cache,
+    connectToDevTools: true,
 })
 
 export default client;
