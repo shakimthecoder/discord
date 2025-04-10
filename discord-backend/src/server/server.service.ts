@@ -63,4 +63,18 @@ export class ServerService {
         });
         if(!server) throw new ApolloError('Server not found', 'SERVER_NOT_FOUND');
     }
+
+    async getServersByProfileEmailOfMember(email: string){
+        return this.prisma.server.findMany({
+             where: {
+                members:{
+                    some: {
+                        profile: {
+                            email
+                        },
+                    },
+                },
+            },
+        })
+    }
 }
