@@ -35,6 +35,7 @@ model Server {
 
 model Member {
   id                      Int             @id @default(autoincrement())
+  role                    MemberRole      @default(GUEST)
   profileId               Int
   serverId                Int
   createdAt               DateTime        @default(now())
