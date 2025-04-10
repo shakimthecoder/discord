@@ -7,7 +7,7 @@ import { ClerkProvider, SignedIn, SignedOut, RedirectToSignIn, RedirectToSignUp 
 import { MantineProvider } from '@mantine/core'
 import { ApolloProvider } from '@apollo/client';
 import  client  from '../apolloClient.ts'
-import RootLayout from './layout/RootLayout.tsx'
+import RouteLayout from './layout/RouteLayout.tsx'
 import App from './App.tsx'
 import HomePage from './pages/HomePage.tsx';
 import { CreateServerModal } from './components/modals/createServerModal.tsx';
@@ -22,20 +22,14 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
       </SignedOut>
     </>
   )
-}
-// Import your Publishable Key
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
-
-if (!PUBLISHABLE_KEY) {
-  throw new Error("Missing Publishable Key")
-}
+  }
 
 
 const RouterComponent = () => {
   const navigate = useNavigate();
   return (
       <Routes>
-       <Route path="" element={<RootLayout />}>
+       <Route path="" element={<RouteLayout />}>
         <Route 
         index
         element={
@@ -54,7 +48,7 @@ const RouterComponent = () => {
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ApolloProvider client={client}>
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+    <ClerkProvider publishableKey={import.meta.env.VITE_CLERK_PUBLISHABLE_KEY} afterSignOutUrl="/">
      <MantineProvider>
       <BrowserRouter>
       <RouterComponent />
