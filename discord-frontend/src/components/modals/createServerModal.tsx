@@ -132,7 +132,7 @@ export function CreateServerModal() {
                             error={form.errors.name}
                             >
                          </TextInput>
-                          <Button disabled={!!form.errors.name} w={"30%"} 
+                          <Button disabled={!!form.errors.name || loading} w={"30%"} 
                           type="submit" 
                           variant="gradient"
                           mt="md"> 
