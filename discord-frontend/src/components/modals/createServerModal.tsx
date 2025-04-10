@@ -68,7 +68,7 @@ export function CreateServerModal() {
           <Text c="dimmed">
             Give your server a personality. You can change this later.
           </Text>
-          <form onSubmit={() => {}}>
+          <form onSubmit={form.onSubmit(() => onSubmit())}>
             <Stack >
                 <Flex justify="center" align="center" direction="column">
                     { !imagePreview && 
