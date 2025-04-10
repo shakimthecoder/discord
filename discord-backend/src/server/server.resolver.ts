@@ -10,7 +10,7 @@ import { GraphqlAuthGuard } from 'src/auth/authGuard';
 import { UseGuards } from '@nestjs/common';
 import { join } from 'path';
 
-
+@UseGuards(GraphqlAuthGuard)
 @Resolver()
 export class ServerResolver {
     constructor(private readonly serverService: ServerService){}
