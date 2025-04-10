@@ -30,8 +30,13 @@ export class ServerResolver {
          @Args('input') input: CreateServerDTo,
          @Args('file', { type: () => GraphQLUpload, nullable: true}) file: GraphQLUpload,
       ){
+         let imageUrl;
+         if(file){
          const imageUrl = await this.storeImageAndGetUrl(file);
+         return this.serverService.createServer(input, imageUrl);
       }
+       
+   }
       private async storeImageAndGetUrl(file: GraphQLUpload) {
          const { createReadStream, filename } = await file;
          const uniqueFileName = uuidv4('filename');
